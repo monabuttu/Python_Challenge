@@ -51,20 +51,35 @@ CorreyWinPercent = percent_won(candidatevotes["Correy"])
 OTooleyWinPercent = percent_won(candidatevotes["O'Tooley"])
 LiWinPercent = percent_won(candidatevotes["Li"])
 
+# put values in a list
+winninglist = [KhanWinPercent,CorreyWinPercent,OTooleyWinPercent,LiWinPercent]
+
+# find winner from list using max function
+winner = max(winninglist)
+
 # Once the election analysis is complete
-print("________________________________________________________________________")
+print("_____________________________________________")
 print("Election Results")
-print("------------------------------------------------------------------------")
+print("---------------------------------------------")
 print(f'Total Votes: {totalvotes}')
-print("------------------------------------------------------------------------")
+print("---------------------------------------------")
 
 # print number of winning votes for each candidate
 
 print(f'Khan: {KhanWinPercent}  ({candidatevotes["Khan"]} votes)')
 print(f'Correy: {CorreyWinPercent} ({candidatevotes["Correy"]} votes)')
-print("O'Tooley:" + str(OTooleyWinPercent) + "(" + str(candidatevotes["O'Tooley"]) + " votes" + ")")
+print("O'Tooley: " + str(OTooleyWinPercent) + "(" + str(candidatevotes["O'Tooley"]) + " votes" + ")")
 print(f'Li: {LiWinPercent} ({candidatevotes["Li"]} votes)')
+print("---------------------------------------------")
 
-print("------------------------------------------------------------------------")
+# print winner
+if winner == KhanWinPercent:
+    print(f'Winner: Khan')
+elif winner == CorreyWinPercent:
+    print(f'Winner: Correy')
+elif winner == OTooleyWinPercent:
+    print(f"Winner: O'Tooley")
+elif winner == LiWinPercent:
+    print(f'Winner: Li')
 
 # Export text file with the results

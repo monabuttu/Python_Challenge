@@ -13,10 +13,6 @@ election_csv = os.path.join('C:\\Users\\HP Book Pro\\Documents\\GitHub\\UT-TOR-D
 # set starting count for total votes
 totalvotes = 0 
 
-# create set to store unique candidates
-
-candidates = set()
-
 # dictionary to start counter and store winning votes for each candidate
 
 candidatevotes = {"Correy":0,"Li":0,"O'Tooley":0,"Khan":0}
@@ -37,7 +33,6 @@ with open(election_csv, 'r', encoding="utf8") as csvfile:
     print(f"Header: {csv_header}")
 
     for row in csvreader:
-        candidates.add(row[2])
         totalvotes += 1
         if row[2] == "Khan":
             candidatevotes["Khan"] += 1
@@ -71,10 +66,10 @@ print("---------------------------------------------")
 
 # print number of winning votes for each candidate
 
-print(f'Khan: {KhanWinPercent}  ({candidatevotes["Khan"]} votes)')
-print(f'Correy: {CorreyWinPercent} ({candidatevotes["Correy"]} votes)')
-print("O'Tooley: " + str(OTooleyWinPercent) + "(" + str(candidatevotes["O'Tooley"]) + " votes" + ")")
-print(f'Li: {LiWinPercent} ({candidatevotes["Li"]} votes)')
+print(f'Khan: {"{0:.3f}".format(KhanWinPercent)}  ({candidatevotes["Khan"]} votes)')
+print(f'Correy: {"{0:.3f}".format(CorreyWinPercent)} ({candidatevotes["Correy"]} votes)')
+print("O'Tooley: " + str("{0:.3f}".format(OTooleyWinPercent)) + "(" + str(candidatevotes["O'Tooley"]) + " votes" + ")")
+print(f'Li: {"{0:.3f}".format(LiWinPercent)} ({candidatevotes["Li"]} votes)')
 print("---------------------------------------------")
 
 # print winner
@@ -87,4 +82,23 @@ elif winner == OTooleyWinPercent:
 elif winner == LiWinPercent:
     print(f'Winner: Li')
 
-# Export text file with the results
+# grab the location that you are writing to
+
+outputpath = os.path.join('C:\\Users\\HP Book Pro\\Desktop',"election_data.txt")
+
+# Write data to text file
+
+with open(outputpath, "w",newline="") as textfile:
+    textfile.write(f'Total Votes: {totalvotes}\n')
+    textfile.write(f'Khan: {"{0:.3f}".format(KhanWinPercent)}  ({candidatevotes["Khan"]} votes)\n')
+    textfile.write(f'Correy: {"{0:.3f}".format(CorreyWinPercent)} ({candidatevotes["Correy"]} votes)\n')
+    textfile.write("O'Tooley: " + str("{0:.3f}".format(OTooleyWinPercent)) + "(" + str(candidatevotes["O'Tooley"]) + " votes" + ")\n")
+    textfile.write(f'Li: {"{0:.3f}".format(LiWinPercent)} ({candidatevotes["Li"]} votes)\n')
+    if winner == KhanWinPercent:
+        textfile.write(f'Winner: Khan')
+    elif winner == CorreyWinPercent:
+        textfile.write(f'Winner: Correy')
+    elif winner == OTooleyWinPercent:
+        textfile.write(f"Winner: O'Tooley")
+    elif winner == LiWinPercent:
+        textfile.write(f'Winner: Li')

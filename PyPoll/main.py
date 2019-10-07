@@ -13,6 +13,10 @@ election_csv = os.path.join('C:\\Users\\HP Book Pro\\Documents\\GitHub\\UT-TOR-D
 # set starting count for total votes
 totalvotes = 0 
 
+# create set to store unique candidates
+
+candidates = set()
+
 # dictionary to start counter and store winning votes for each candidate
 
 candidatevotes = {"Correy":0,"Li":0,"O'Tooley":0,"Khan":0}
@@ -33,6 +37,7 @@ with open(election_csv, 'r', encoding="utf8") as csvfile:
     print(f"Header: {csv_header}")
 
     for row in csvreader:
+        candidates.add(row[2])
         totalvotes += 1
         if row[2] == "Khan":
             candidatevotes["Khan"] += 1

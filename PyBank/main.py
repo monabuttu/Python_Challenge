@@ -16,6 +16,15 @@ months = 0
 # set starting profit/loss counter
 nettotal = 0
 
+# create list for all proft/losses values
+
+profitlosses = []
+
+# create average function
+
+def averagechange(firstprice,secondprice):
+    return (int(secondprice) - int(firstprice)) / months
+
 # Read in the CSV file
 with open(budget_csv, 'r', encoding="utf8") as csvfile:
 
@@ -30,7 +39,20 @@ with open(budget_csv, 'r', encoding="utf8") as csvfile:
     for row in csvreader:
         months += 1
         nettotal += (int(row[1]))
+        profitlosses.append(row[1])
         
+
+# store first price
+
+startprice = profitlosses[0]
+
+# store second price
+
+lastprice = profitlosses[-1]
+
+# calculate average change
+
+Avchange = averagechange(startprice,lastprice)
 
 # Once the financial analysis is complete
 
@@ -39,9 +61,9 @@ print("Financial Anaylsis")
 print("------------------------------------------------------------------------")
 print(f'Total Months: {months}')
 print(f'Net Total: ${nettotal}')
-print("Average Change")
-print("Greatest Increase in Profits")
-print("Greatest decrease in Profits")
+print(f'Average Change: {Avchange}')
+print("Greatest Increase in Profits:")
+print("Greatest decrease in Profits:")
 print("------------------------------------------------------------------------")
 
 # Export text file with the results

@@ -28,10 +28,11 @@ with open(election_csv, 'r', encoding="utf8") as csvfile:
     # Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    # store header row/Read the header row first (skip this part if there is no header)
+    # store header row/Read the header row first and print header row
     csv_header = next(csvfile)
     print(f"Header: {csv_header}")
 
+    # go through each row and add to total row counter as well as candidate counter
     for row in csvreader:
         totalvotes += 1
         if row[2] == "Khan":
@@ -51,7 +52,7 @@ CorreyWinPercent = percent_won(candidatevotes["Correy"])
 OTooleyWinPercent = percent_won(candidatevotes["O'Tooley"])
 LiWinPercent = percent_won(candidatevotes["Li"])
 
-# put values in a list
+# put percent won values in a list
 winninglist = [KhanWinPercent,CorreyWinPercent,OTooleyWinPercent,LiWinPercent]
 
 # find winner from list using max function
@@ -72,7 +73,7 @@ print("O'Tooley: " + str("{0:.3f}".format(OTooleyWinPercent)) + "(" + str(candid
 print(f'Li: {"{0:.3f}".format(LiWinPercent)} ({candidatevotes["Li"]} votes)')
 print("---------------------------------------------")
 
-# print winner
+# check who the winner is and print the winner
 if winner == KhanWinPercent:
     print(f'Winner: Khan')
 elif winner == CorreyWinPercent:

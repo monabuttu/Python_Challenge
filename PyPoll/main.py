@@ -8,7 +8,7 @@ import os
 
 cwd = os.getcwd()
 
-election_csv = os.path.join('C:\\Users\\HP Book Pro\\Documents\\GitHub\\UT-TOR-DATA-PT-09-2019-U-C\\Unit 3 - Python\\Homework\\Instructions\\PyPoll\\Resources',"election_data.csv")
+election_csv = os.path.join(cwd,"..","UT-TOR-DATA-PT-09-2019-U-C","Unit 3 - Python","Homework","Instructions","PyPoll","Resources","election_data.csv")
 
 # set starting count for total votes
 totalvotes = 0 
@@ -84,7 +84,7 @@ elif winner == LiWinPercent:
 
 # grab the location that you are writing to
 
-outputpath = os.path.join('C:\\Users\\HP Book Pro\\Desktop',"election_data.txt")
+outputpath = os.path.join(cwd,"..","election_data.txt")
 
 # Write data to text file
 

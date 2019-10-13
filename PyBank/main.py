@@ -7,8 +7,9 @@ import os
 # Path to collect data from the Resources folder
 
 cwd = os.getcwd()
+print(cwd)
 
-budget_csv = os.path.join('C:\\Users\\HP Book Pro\\Documents\\GitHub\\UT-TOR-DATA-PT-09-2019-U-C\\Unit 3 - Python\\Homework\\Instructions\\PyBank\\Resources',"budget_data.csv")
+budget_csv = os.path.join(cwd,"..","UT-TOR-DATA-PT-09-2019-U-C","Unit 3 - Python","Homework","Instructions","PyBank","Resources","budget_data.csv")
 
 # set starting month counter
 months = 0
@@ -19,6 +20,10 @@ nettotal = 0
 # create list for all proft/losses values
 
 profitlosses = []
+
+# set counter for change value
+
+profitlosseschange = []
 
 # create average function
 
@@ -40,8 +45,12 @@ with open(budget_csv, 'r', encoding="utf8") as csvfile:
         months += 1
         nettotal += (int(row[1]))
         profitlosses.append(row[1])
-        
-
+    
+    for index, item in enumerate(profitlosses[0:-1]):
+        profitlosseschange.append(int(profitlosses[index+1]) - int(profitlosses[index]))
+    
+    print(profitlosseschange)
+    
 # store first price
 
 startprice = profitlosses[0]
@@ -61,9 +70,24 @@ print("Financial Anaylsis")
 print("------------------------------------------------------------------------")
 print(f'Total Months: {months}')
 print(f'Net Total: ${nettotal}')
-print(f'Average Change: {Avchange}')
-print("Greatest Increase in Profits:")
-print("Greatest decrease in Profits:")
+print(f'Average Change: ${"{0:.2f}".format(Avchange)}')
+print(f'Greatest Increase in Profits: ($)')
+print(f'Greatest decrease in Profits: ($)')
 print("------------------------------------------------------------------------")
 
-# Export text file with the results
+# grab the location that you are writing to
+
+outputpath = os.path.join(cwd,"..","bank_data.txt")
+
+# Write data to text file
+
+with open(outputpath, "w",newline="") as textfile:
+    textfile.write("------------------------------------------------------------------------\n")
+    textfile.write("Financial Anaylsis\n")
+    textfile.write("------------------------------------------------------------------------\n")
+    textfile.write(f'Total Months: {months}\n')
+    textfile.write(f'Net Total: ${nettotal}\n')
+    textfile.write(f'Average Change: ${"{0:.2f}".format(Avchange)}\n')
+    textfile.write(f'Greatest Increase in Profits: ($)\n')
+    textfile.write(f'Greatest decrease in Profits: ($)\n')
+    textfile.write("------------------------------------------------------------------------\n")

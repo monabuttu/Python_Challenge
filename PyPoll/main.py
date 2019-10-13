@@ -8,7 +8,7 @@ import os
 
 cwd = os.getcwd()
 
-election_csv = os.path.join('C:\\Users\\HP Book Pro\\Documents\\GitHub\\UT-TOR-DATA-PT-09-2019-U-C\\Unit 3 - Python\\Homework\\Instructions\\PyPoll\\Resources',"election_data.csv")
+election_csv = os.path.join('C:\\Users\\HP Book Pro\\Desktop\\UT-TOR-DATA-PT-09-2019-U-C\\Unit 3 - Python\\Homework\\Instructions\\PyPoll\\Resources',"election_data.csv")
 
 # set starting count for total votes
 totalvotes = 0 

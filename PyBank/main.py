@@ -7,8 +7,9 @@ import os
 # Path to collect data from the Resources folder
 
 cwd = os.getcwd()
-
-budget_csv = os.path.join('C:\\Users\\HP Book Pro\\Documents\\GitHub\\UT-TOR-DATA-PT-09-2019-U-C\\Unit 3 - Python\\Homework\\Instructions\\PyBank\\Resources',"budget_data.csv")
+print(cwd)
+'''
+budget_csv = os.path.join(cwd,"Desktop","UT-TOR-DATA-PT-09-2019-U-C","Unit 3 - Python","Homework","Instructions","PyBank","Resources","budget_data.csv")
 
 # set starting month counter
 months = 0
@@ -66,4 +67,11 @@ print("Greatest Increase in Profits:")
 print("Greatest decrease in Profits:")
 print("------------------------------------------------------------------------")
 
-# Export text file with the results
+# grab the location that you are writing to
+
+outputpath = os.path.join(cwd,"Desktop","bank_data.txt")
+
+# Write data to text file
+
+with open(outputpath, "w",newline="") as textfile:
+'''
